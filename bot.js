@@ -130,13 +130,22 @@ client.on('message', message => {
 });
 
 
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    console.log(`in ${client.guilds.size} servers `)
-    console.log(`[Codes] ${client.users.size}`)
-	client.user.setStatus("idle")
-client.user.setStatus("Online")
-client.user.setGame(`+support +invite دخل البوت سيرفرك و اعطه اعلى رتبة و سوي روم اسمه log و بس:D ${client.users.size} Users | Bot By xHexon`, "https://twitch.tv/Testing")
+  client.on('ready', function(){
+    var ms = 1000 ;
+    var setGame = [`${prefix}invite | BOT By  `,` ${prefix}support | BOT By xHexon `,`دخل البوت سيرفرك و اعطه اعلى رتبة و سوي روم اسمه log و بس:D  `,`${client.users.size} Users | Bot By xHexon `];
+    var i = -1;
+    var j = 0;
+    setInterval(function (){
+        if( i == -1 ){
+            j = 1;
+        }
+        if( i == (setGame.length)-1 ){
+            j = -1;
+        }
+        i = i+j;
+        client.user.setGame(setGame[i],`https://www.twitch.tv/master__gamersyt`);
+    }, ms);1000
+
 });
 
 
