@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
- const prefix = "%";
+ const prefix = "+";
 client.on('ready', () => {
     console.log('I am ready!');
 });
@@ -118,7 +118,6 @@ channel.guild.owner.send(`<@!${channelremover.id}>
 	   }
    });
 
-const prefix = "+"
 
 client.on('message', message => {
      if (message.content === "+servers") {
