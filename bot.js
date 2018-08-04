@@ -1,8 +1,16 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 const client = new Discord.Client();
+ const prefix = "%";
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+    console.log('I am ready!');
 });
+
+client.on('message', message => {
+    if (message.content === 'ping') {
+        message.reply('pong');
+      }
+});
+
 var guilds = {};
 client.on('guildBanAdd', function(guild) {
             const rebellog = client.channels.find("name", "log"),
@@ -148,11 +156,6 @@ client.on("message", message => {
 
 
 
-   const child_process = require("child_process");
-  client.on('ready' , function (){
-var time = 7200000;
-client.setInterval(function() {
-    client.destroy();
-        child_process.fork(__dirname + "/c.js");
-  }, time);
-});
+
+
+client.login(process.env.BOT_TOKEN);
