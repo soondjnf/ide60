@@ -132,7 +132,7 @@ client.on('message', message => {
 
   client.on('ready', function(){
     var ms = 1000 ;
-    var setGame = [`${prefix}invite | BOT By  `,` ${prefix}support | BOT By xHexon `,`دخل البوت سيرفرك و اعطه اعلى رتبة و سوي روم اسمه log و بس:D  `,`${client.users.size} Users | Bot By xHexon `];
+    var setGame = [`${prefix}invite | BOT By xHexon `,` ${prefix}support | BOT By xHexon `,`دخل البوت سيرفرك و اعطه اعلى رتبة و سوي روم اسمه log و بس:D  `,`${client.users.size} Users | Bot By xHexon `];
     var i = -1;
     var j = 0;
     setInterval(function (){
