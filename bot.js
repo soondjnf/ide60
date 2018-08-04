@@ -147,7 +147,6 @@ client.on("message", message => {
 
 
 
-  client.login("NDcwOTk0OTQ4ODM4MTI5NjY0.DjeYTw.JCmEHc5PLv6yxG_JzMUAWUQIvFk");
 
    const child_process = require("child_process");
   client.on('ready' , function (){
