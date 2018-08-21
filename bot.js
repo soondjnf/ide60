@@ -247,56 +247,6 @@ if (ReBeLL.content.startsWith(prefix + `8ball`)) {
 
 
 
-client.on('message', message => {
-    if(message.content.includes('discord.gg','.com','.net','.tv','.io','https://','http://')){
-                                            if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
-    let channel = client.guild.channels.find('name', 'نشر-اليوتيوبرز');
-        message.delete()
-    return message.reply(`** ممنوع نشر الروابط :angry: ! **`)
-    }
-}
-});
-
-        client.on('message', async message => {
-            if(message.content.includes('discord.gg','.com','.net','https://','http://','.io','.tv')){
-    let channel = member.guild.channels.find('name', 'نشر-اليوتيوبرز');
-        if(!message.channel.guild) return;
-        message.delete()
-          var command = message.content.split(" ")[0];
-    let muterole = message.guild.roles.find(`name`, "Muted");
-    if(!muterole){
-      try{
-        muterole = await message.guild.createRole({
-          name: "Muted",
-          color: "RANDOM",
-          permissions:[]
-        })
-        message.guild.channels.forEach(async (channel, id) => {
-          await channel.overwritePermissions(muterole, {
-            SEND_MESSAGES: false,
-            ADD_REACTIONS: false
-          });
-        });
-      }catch(e){
-        console.log(e.stack);
-      }
-    }
-           if(!message.channel.guild) return message.reply('** This command only for servers**');
-     message.member.addRole(muterole);
-    const embed500 = new Discord.RichEmbed()
-.setDescription(`**  🔒 لقد تمت معاقبتك  **
-**  بسبب نشر الروابط خيو 😏 🐸 **
-`)
-            .setColor("RANDOM")
-            .setThumbnail(`${message.author.avatarURL}`)
-            .setAuthor(message.author.username, message.author.avatarURL)
-        .setFooter(`${message.guild.name} `)
-     message.channel.send(embed500)
-
-
-    }
-})
-
 client.on('message', function(message) {
     if(message.content.startsWith(prefix + "report")) {
         let messageArgs = message.content.split(" ").slice(1).join(" ");
