@@ -1,2 +1,0 @@
-# ide60
-AntiHack
