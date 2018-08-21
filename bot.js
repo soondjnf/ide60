@@ -250,8 +250,7 @@ if (ReBeLL.content.startsWith(prefix + `8ball`)) {
 client.on('message', message => {
     if(message.content.includes('discord.gg','.com','.net','.tv','.io','https://','http://')){
                                             if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
-        if (!message.member.hasRole(['YouTuper'])){
-        if (!message.member.hasRole(['YouTuber -100'])){
+    let channel = client.guild.channels.find('name', 'نشر-اليوتيوبرز');
         message.delete()
     return message.reply(`** ممنوع نشر الروابط :angry: ! **`)
     }
@@ -260,8 +259,7 @@ client.on('message', message => {
 
         client.on('message', async message => {
             if(message.content.includes('discord.gg','.com','.net','https://','http://','.io','.tv')){
-        if (!message.member.hasRole(['YouTuper'])){
-        if (!message.member.hasRole(['YouTuber -100'])){
+    let channel = member.guild.channels.find('name', 'نشر-اليوتيوبرز');
         if(!message.channel.guild) return;
         message.delete()
           var command = message.content.split(" ")[0];
@@ -396,14 +394,12 @@ client.on("message", message => {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
            .setFooter('[❖═════اومر الاعضاء═══════❖]')
-          .addField('$invite', `لاضافة البوت الى سيرفرك`)
 	  .addField('$roles', `لمعرفة الرتب الي في السيرفر`)
           .addField('$avatar', `يجبلك الافتار حقك يعني صورة حسابك`)
 	  .addField('$server', `يجبلك معلومات السيرفر`)
 	  .addField('$id', `يجبلك الملف الشخصي حقك`)
 	  .addField('$servers', `يجبلك عدد السيرفرات التي البوت داخله`)
 	  .addField('$ping', `يقلك كم بنق البوت`)
-          .addField('$support', `سيرفر الدعم حق البوت`)
 	  .addField('$image', `يعرض صورة سيرفر`)
 	  .addField('$members', `حاله الاعضاء`)
           .addField('$credits', `عشان تشوف الكردتس الخاصة بك`)
@@ -500,63 +496,10 @@ member.addRole(KinG66S[member.user.id].roles.shift());
 });
 
 
-   client.on('message', message => {
-	   if(message.content.startsWith(`${prefix}invite`)){
-		   if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
-		   var embed = new Discord.RichEmbed()
-		   .setTitle(">> ClickHere To Add " + `${client.user.username}` + " <<")
-		   .setURL("https://discordapp.com/api/oauth2/authorize?client_id=" + `${client.user.id}` + "&permissions=8&scope=bot")
-		   .setTimestamp()
-		   .setFooter(`Requested By | ${message.author.username}`)
-		   .setColor("RANDOM")
-  message.channel.send(`:mailbox_with_mail:  | Check Your DM`)
-		   message.author.send({embed})
-	   }
-   });
 
 
 
 
-   client.on('message', message => {
-	   if(message.content.startsWith(`${prefix}support`)){
-		   if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
-		   var embed = new Discord.RichEmbed()
-		   .setTitle(">> ClickHere To Join The Support Server " + `${client.user.username}` + " <<")
-		   .setURL("https://discord.gg/" + `${client.user.id}` + "j2nWXY4")
-		   .setTimestamp()
-		   .setFooter(`Requested By | ${message.author.username}`)
-		   .setColor("RANDOM")
-  message.channel.send(`:mailbox_with_mail:  | Check Your DM`)
-		   message.author.send({embed})
-	   }
-   });
-
-
-client.on('message', message => {
-       if(message.content.startsWith(`${prefix}invite`)){
-           if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
-           var embed = new Discord.RichEmbed()
-           .setTitle("Invite EpicBot")
-           .setURL("https://discordapp.com/oauth2/authorize?client_id=" + `${client.user.id}` + "&permissions=8&scope=bot")
-           .setTimestamp()
-           .setColor("RANDOM")
-           message.channel.send({embed})
-  message.channel.send(`:mailbox_with_mail:  | هذه الرسالة غرضها لو انت مسكر خاص`)
-       }
-   });
-
-client.on('message', message => {
-       if(message.content.startsWith(`${prefix}support`)){
-           if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
-           var embed = new Discord.RichEmbed()
-           .setTitle("Join The Support Of NasoorBot")
-	   .setURL("https://discord.gg/" + `${client.user.id}` + "j2nWXY4")
-           .setTimestamp()
-           .setColor("RANDOM")
-           message.channel.send({embed})
-  message.channel.send(`:mailbox_with_mail:  | هذه الرسالة غرضها لو انت مسكر خاص`)
-       }
-   });
 
 
 
