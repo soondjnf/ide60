@@ -6,10 +6,6 @@ const fs = require('fs');
 const moment = require('moment');
 const jimp = require('jimp');
 const Canvas = require('canvas');
-
-    console.log('I am ready!');
-});
-
 client.on('guildMemberAdd', member => {
      const welcomer =  member.guild.channels.find('name', 'welcome');
     if(!welcomer) return;
@@ -129,7 +125,8 @@ msg.delete();
 }
 });
 
-
+    console.log('I am ready!');
+});
 
 
   client.login(process.env.BOT_TOKEN);
