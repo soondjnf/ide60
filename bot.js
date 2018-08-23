@@ -1274,7 +1274,6 @@ let args = message.content.split(" ").slice(1);
 
 
 client.on('guildMemberAdd',async member => {
-  let channel = member.guild.channels.find('name', 'welcome');
   const Canvas = require('canvas');
   const jimp = require('jimp');
   const w = ['./welcome_4.png'];
@@ -1317,7 +1316,6 @@ client.on('guildMemberAdd',async member => {
           ctx.textAlign = "center";
           ctx.fillText(`${member.guild.memberCount} Members`, 580, 200);
          
-    let channel = member.guild.channels.find('name', 'welcome');
           let Avatar = Canvas.Image;
           let ava = new Avatar;
           ava.src = buf;
@@ -1327,7 +1325,8 @@ client.on('guildMemberAdd',async member => {
           ctx.clip();
           ctx.drawImage(ava, 36, 21, 260, 260);
            
-          client.sendFile(canvas.toBuffer());
+          const c = client.channels.get("welcome");
+          c.sendFile(canvas.toBuffer());
  
 });
 });
