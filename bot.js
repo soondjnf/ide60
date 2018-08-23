@@ -1273,7 +1273,6 @@ let args = message.content.split(" ").slice(1);
  });
 
 
-const fs = require('fs');
 const moment = require('moment');
 const jimp = require('jimp');
 const Canvas = require('canvas');
