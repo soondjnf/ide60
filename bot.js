@@ -1272,10 +1272,6 @@ let args = message.content.split(" ").slice(1);
  };
  });
 
-
-const jimp = require('jimp');
-const Canvas = require('canvas');
-
 client.on('guildMemberAdd', member => {
      const welcomer =  member.guild.channels.find('name', 'welcome');
     if(!welcomer) return;
