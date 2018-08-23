@@ -12,7 +12,7 @@ client.on('message', message => {
 });
 
 client.on('message', msg => {
-  if (msg.content === '%ownerbot') {
+  if (msg.content === '$ownerbot') {
     msg.reply('**OwnerBot <@445613847470931990>**');
   }
 });
