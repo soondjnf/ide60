@@ -1,14 +1,14 @@
 {
     "servers": [
-       "server1 id" , "server2 id" //يمديك ضيق سرفرات..
+       "444538099155075073" , "482686533938315275"
      
       
       
 
     
     ],
-      "roleName": "اسم رتبه", 
-    "colors": 12,//لا تغيره
-    "speed": 60.000,//لا تغيره
+      "roleName": "rainbow", 
+    "colors": 12,
+    "speed": 60.000,
     "logging": true
 }
