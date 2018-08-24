@@ -625,6 +625,7 @@ client.on('ready', () => {
   if(config.speed <60.000){
   setInterval(changeColor, config.speed);
 });
+});
 
 
   client.login(process.env.BOT_TOKEN);
