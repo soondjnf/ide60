@@ -9,6 +9,7 @@
   "dependencies": {
    "discord.js": "^11.3.2",
    "canvas": "^ 1.6.11",
+   "short-number": "^1.0.6",
     "discord.js-musicbot-addon": "^1.10.3",
     "express": "^4.16.3",
     "finalhandler": "^1.1.1",
