@@ -685,7 +685,7 @@ client.on('guildMemberAdd',async member => {
       await new_message.react('8⃣');
       await new_message.react('9⃣');
       await new_message.react('🆗');
-      await new_message.edit(`انه <@${turn_id}>\دور علامتك هي ${symbol}`)
+      await new_message.edit(`انه دور <@${turn_id}>/ علامتك هي${symbol}`)
       .then((new_new_message) => {
         require('./alpha.js')(client, message, new_new_message, player1_id, player2_id, turn_id, symbol, symbols, grid_message);
       })
