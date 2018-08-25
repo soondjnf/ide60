@@ -660,7 +660,7 @@ client.on('guildMemberAdd',async member => {
     var symbol = symbols[0];
     let initial_message = `مباراة بين <@${player1_id}> و <@${player2_id}>!`;
     if (player1_id == player2_id) {
-      initial_message += '\n_(What a loser, playing this game with yourself :joy:)_'
+      initial_message += '\n_(من الخاسر, انت تلعب هذا الدور مع نفسك :joy:)_'
     }
     message.channel.send(`xo! ${initial_message}`)
     .then(console.log("Successful tictactoe introduction"))
@@ -673,7 +673,7 @@ client.on('guildMemberAdd',async member => {
     })
     .then(console.log("Successful xo game initialization"))
     .catch(console.error);
-    message.channel.send('يتم تحميل... انتظر الرئاكشن :ok:')
+    message.channel.send('يتم تحميل... انتظر الريئاكشن :ok:')
     .then(async (new_message) => {
       await new_message.react('1⃣');
       await new_message.react('2⃣');
