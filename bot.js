@@ -823,11 +823,8 @@ client.on("message", async message => {
     if (command === "rec") {
             if(!message.guild.members.get(client.user.id).hasPermission("ADMINISTRATOR")) return message.channel.send("**__ADMINISTRATOR__ ليس لدي صلاحيت لهذا الامر احتاج**").then(m => {m.delete(2000)})
         message.delete()
-        if(stopReac != false) return  message.channel.send(" **لازال هناك امر قيد الإنتضار**").then(m => {m.delete(2000)})
-         else {
-            if(!message.guild.members.get(client.user.id).hasPermission("ADMINISTRATOR")) return message.channel.send("**__ADMINISTRATOR__ ليس لدي صلاحيت لهذا الامر احتاج**").then(m => {m.delete(2000)})
             var filter = m => m.author.id === message.author.id;
-            stopReac = true;
+            stopReac = false;
             message.channel.send('** ارسل اسم الرتبة او الــ اي دي\n لديك 40 ثانية فقط   **')
                 .then((message) => {
                     message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
