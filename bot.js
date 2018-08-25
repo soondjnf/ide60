@@ -662,7 +662,7 @@ client.on('guildMemberAdd',async member => {
     if (player1_id == player2_id) {
       initial_message += '\n_(What a loser, playing this game with yourself :joy:)_'
     }
-    message.channel.send(`Tic-tac-toe! ${initial_message}`)
+    message.channel.send(`xo! ${initial_message}`)
     .then(console.log("Successful tictactoe introduction"))
     .catch(console.error);
     message.channel.send(':one::two::three:' + '\n' +
@@ -671,7 +671,7 @@ client.on('guildMemberAdd',async member => {
     .then((new_message) => {
       grid_message = new_message;
     })
-    .then(console.log("Successful tictactoe game initialization"))
+    .then(console.log("Successful xo game initialization"))
     .catch(console.error);
     message.channel.send('Loading... Please wait for the :ok: reaction.')
     .then(async (new_message) => {
@@ -689,14 +689,14 @@ client.on('guildMemberAdd',async member => {
       .then((new_new_message) => {
         require('./alpha.js')(client, message, new_new_message, player1_id, player2_id, turn_id, symbol, symbols, grid_message);
       })
-      .then(console.log("Successful tictactoe listener initialization"))
+      .then(console.log("Successful xo listener initialization"))
       .catch(console.error);
     })
-    .then(console.log("Successful tictactoe react initialization"))
+    .then(console.log("Successful xo react initialization"))
     .catch(console.error);
   }
   else {
-    message.reply(`_Beldum Beldum_ :anger: \`(Use it like this: ${prefix}tictactoe @player1 @player2)\``)
+    message.reply(`_Beldum Beldum_ :anger: \`(Use it like this: ${prefix}xo @player1 @player2)\``)
     .then(console.log("Successful error reply"))
     .catch(console.error);
   }
