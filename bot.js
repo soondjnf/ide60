@@ -685,7 +685,7 @@ client.on('guildMemberAdd',async member => {
       await new_message.react('8⃣');
       await new_message.react('9⃣');
       await new_message.react('🆗');
-      await new_message.edit(`انه دور <@${turn_id}>/ علامتك هي${symbol}`)
+      await new_message.edit(`انه دور <@${turn_id}> علامتك هي${symbol}`)
       .then((new_new_message) => {
         require('./alpha.js')(client, message, new_new_message, player1_id, player2_id, turn_id, symbol, symbols, grid_message);
       })
@@ -696,7 +696,7 @@ client.on('guildMemberAdd',async member => {
     .catch(console.error);
   }
   else {
-    message.reply(`_Beldum Beldum_ :anger: \`(استعمل هذا: ${prefix}xo @player1 @player2)\``)
+    message.reply(`_Beldum Beldum_ :anger: \`(استعمل هذا: ${prefix}xo @player1 @player2)``)
     .then(console.log("Successful error reply"))
     .catch(console.error);
   }
@@ -749,6 +749,118 @@ client.on('guildMemberAdd',async member => {
            });//jackeo جاكيو
          }//jackeo جاكيو
  });//jackeo جاكيو
+
+
+
+var stopReac = false;
+
+client.on("message", async message => {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+    if(message.author.bot) return;
+    if(message.content.indexOf(prefix) !== 0) return;
+
+    if (command === "rec") {
+        message.delete()
+        if(stopReac != false) return  message.channel.send(" **لازال هناك امر قيد الإنتضار**").then(m => {m.delete(2000)})
+         else {
+            if(!message.guild.members.get(client.user.id).hasPermission("ADMINISTRATOR")) return message.channel.send("**__ADMINISTRATOR__ ليس لدي صلاحيت لهذا الامر احتاج**").then(m => {m.delete(2000)})
+            var filter = m => m.author.id === message.author.id;
+            stopReac = true;
+            message.channel.send('** ارسل اسم الرتبة او الــ اي دي\n لديك 40 ثانية فقط   **')
+                .then((message) => {
+                    message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
+                        .then(  async (collected) => {
+                            var role = await  message.guild.roles.find("name", collected.first().content) || message.guild.roles.get(collected.first().content);
+                            if (!role) {  
+                                if(collected.first().content == "rec"){ 
+                                    message.channel.send("** تم إلغاء الامر الرجاء الإعادة مرة ثانية **"); stopReac = false; 
+                                    return
+                                } else { 
+                                    message.channel.send(" **تم إالغاء الأمر \n المعذرة لم اجد هذه الرتبة ربما قمت بإدخال معلومات غير صحيحة **"); stopReac = false; 
+                                    return
+                                }
+                            }
+                            message.channel.send(`** ساقوم بجمع البيانات ثم ارسلها في هذا الروم  __${role.name}__  اذهب الى الرسالة التي تريدها وقم بوضع رياكشن للرتبة **`)
+                                .then((m) => {
+                                    message.delete();
+                                    collected.first().delete();
+                                    startReac(collected.first(), role, m)
+                                })
+                        })
+                        .catch(() => {
+                            message.channel.send('** لم تقم بأرسال اي معلومات صحيحة خلال الوقت المحدد تم إلغاء الامر **').then(m => {m.delete(2000)})
+                        })
+                });
+         }      
+    }
+})
+
+var ReactionRoles = [];
+
+async function startReac(message, role, m) {
+    client.on("raw", async packet => {
+            if (packet.t == "MESSAGE_REACTION_ADD") {
+                if (stopReac != false) {
+                    if(packet.d.guild_id != message.guild.id || packet.d.user_id != message.author.id) return;
+                        var guild = await client.guilds.get(packet.d.guild_id);
+                        var channel = await guild.channels.get(packet.d.channel_id)
+                        message.channel.fetchMessages({around: packet.d.message_id, limit: 1})
+                        .then(async messages => { 
+                            const fetchedMsg = messages.first();
+                        var me = await fetchedMsg.reactions.first().users.get(packet.d.user_id);
+                        var emoji = await packet.d.emoji.id ? `${packet.d.emoji.name}:${packet.d.emoji.id}` : packet.d.emoji.name;
+                        var reaction = await message.reactions.get(emoji);
+                        var reactionRole = {
+                            guild: guild,
+                            channel: channel,
+                            message: fetchedMsg, 
+                            emoji: emoji,
+                            reaction: reaction,
+                            role: role,
+                        }
+                        ReactionRoles.push(reactionRole)
+                        message.channel.send(`
+                        <#${packet.d.channel_id}> **تم تفعيل رتبة الرياكشن في الروم **\n**__${message.content}__ اسم الرتبة**\n**${packet.d.message_id} اي دي الرسالة**\n**${packet.d.emoji.name}الايموجي**\n __**ملاحضة: لا استطيع اعطاء الرتبة لعضو اعلى مني**__\n`)
+                        .then( async (m)=> {
+                            m.delete(6000)
+                        })
+                        reaction.remove(me)
+                        message.react(emoji)
+                        stopReac = false;
+                    });
+                } 
+        } 
+    })
+}
+
+client.on("raw", async packet => {
+    if (packet.t == "MESSAGE_REACTION_ADD") {
+        if(ReactionRoles[0]) {
+            ReactionRoles.map(event => {
+                if(packet.d.user_id == client.user.id) return;
+                if(packet.d.guild_id == event.guild.id) {
+                    if(packet.d.message_id == event.message.id) {
+                        var guild = client.guilds.get(packet.d.guild_id);
+                        guild.members.get(packet.d.user_id).addRole(event.role)
+                    }
+                }
+            })
+        }
+    } else if(packet.t == "MESSAGE_REACTION_REMOVE") {
+        if(ReactionRoles[0]) {
+            ReactionRoles.map(event => {
+                if(packet.d.user_id == client.user.id) return;
+                if(packet.d.guild_id == event.guild.id) {
+                    if(packet.d.message_id == event.message.id) {
+                        var guild = client.guilds.get(packet.d.guild_id);
+                        guild.members.get(packet.d.user_id).removeRole(event.role)
+                    }
+                }
+            })
+        }
+    }
+})
 
 
 
