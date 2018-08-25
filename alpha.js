@@ -110,7 +110,7 @@ module.exports = (client, message, new_message, player1_id, player2_id, turn_id,
       if (score[i][0] == sym &&
           score[i][1] == sym &&
           score[i][2] == sym) {
-            new_message.edit(`Congratulations! <@${player}> won!`)
+            new_message.edit(`مبروك! <@${player}> لقد فاز!`)
             .then(console.log('Successful win'))
             .catch(console.error);
             return true;
@@ -119,7 +119,7 @@ module.exports = (client, message, new_message, player1_id, player2_id, turn_id,
       else if (score[0][i] == sym &&
                score[1][i] == sym &&
                score[2][i] == sym) {
-               new_message.edit(`Congratulations! <@${player}> won!`)
+               new_message.edit(`مبروك! <@${player}> لقد فاز!`)
                .then(console.log('Successful win'))
                .catch(console.error);
                return true;
@@ -129,7 +129,7 @@ module.exports = (client, message, new_message, player1_id, player2_id, turn_id,
     if (score[0][0] == sym &&
         score[1][1] == sym &&
         score[2][2] == sym) {
-          new_message.edit(`Congratulations! <@${player}> won!`)
+          new_message.edit(`مبروك! <@${player}> لقد فاز!`)
           .then(console.log('Successful win'))
           .catch(console.error);
           return true;
@@ -137,7 +137,7 @@ module.exports = (client, message, new_message, player1_id, player2_id, turn_id,
     else if (score[0][2] == sym &&
              score[1][1] == sym &&
              score[2][0] == sym) {
-               new_message.edit(`Congratulations! <@${player}> won!`)
+               new_message.edit(`مبروك! <@${player}> لقد فاز!`)
                .then(console.log('Successful win'))
                .catch(console.error);
                return true;
@@ -157,7 +157,7 @@ module.exports = (client, message, new_message, player1_id, player2_id, turn_id,
       }
     }
     if (null_counter == 0) {
-      new_message.edit('Boo! It\'s a tie!')
+      new_message.edit('انه تعادل')
       .then(console.log('Successful tie'))
       .catch(console.error);
       return true;
