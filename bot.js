@@ -579,52 +579,62 @@ message.channel.sendFile(canvas.toBuffer())
 });
 
 
-const config = require('./configs.json');
 
-
-const size    = config.colors;
-const rainbow = new Array(size);
-
-for (var i=0; i<size; i++) {
-  var red   = sin_to_hex(i, 0 * Math.PI * 2/3); // 0   deg
-  var blue  = sin_to_hex(i, 1 * Math.PI * 2/3); // 120 deg
-  var green = sin_to_hex(i, 2 * Math.PI * 2/3); // 240 deg
-
-  rainbow[i] = '#'+ red + green + blue;
-}
-
-function sin_to_hex(i, phase) {
-  var sin = Math.sin(Math.PI / size * 2 * i + phase);
-  var int = Math.floor(sin * 127) + 128;
-  var hex = int.toString(16);
-
-  return hex.length === 1 ? '0'+hex : hex;
-}
-
-let place = 0;
-const servers = config.servers;
-
-function changeColor() {
-  for (let index = 0; index < servers.length; ++index) {        
-    client.guilds.get(servers[index]).roles.find('name', config.roleName).setColor(rainbow[place])
-        .catch(console.error);
-        
-    
-    
-    if(place == (size - 1)){
-      place = 0;
-    }else{
-      place++;
-    }
-  }
-}
-
-
-
-client.on('ready', () => {
-  console.log('Bot Is Online')
-  if(config.speed <60.000){console.log("The minimum speed is 60.000, if this gets abused your bot might get IP-banned"); process.exit(1);}
-  setInterval(changeColor, config.speed);
+client.on('guildMemberAdd',async member => {
+  const w = ['./welcome_4.png'];
+        let Image = Canvas.Image,
+            canvas = new Canvas(800, 300),
+            ctx = canvas.getContext('2d');
+        ctx.patternQuality = 'bilinear';
+        ctx.filter = 'bilinear';
+        ctx.antialias = 'subpixel';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+        ctx.shadowOffsetY = 2;
+        ctx.shadowBlur = 2;
+        ctx.stroke();
+        ctx.beginPath();
+ 
+        fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+            if (err) return console.log(err);
+            let BG = Canvas.Image;
+            let ground = new Image;
+            ground.src = Background;
+            ctx.drawImage(ground, 0, 0, 800, 300);
+ 
+})
+ 
+                let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".png" : member.user.displayAvatarURL;
+                jimp.read(url, (err, ava) => {
+                    if (err) return console.log(err);
+                    ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                 if (err) return console.log(err);
+ 
+          ctx.font = '36px Arial';
+          ctx.fontSize = '72px';
+          ctx.fillStyle = "#ffffff";
+          ctx.textAlign = "center";
+          ctx.fillText(member.user.username, 545, 177);
+         
+          ctx.font = '16px Arial Bold';
+          ctx.fontSize = '72px';
+          ctx.fillStyle = "#ffffff";
+          ctx.textAlign = "center";
+          ctx.fillText(`${member.guild.memberCount} Members`, 580, 200);
+         
+          let Avatar = Canvas.Image;
+          let ava = new Avatar;
+          ava.src = buf;
+          ctx.beginPath();
+          ctx.arc(169.5, 148, 126.9, -100, Math.PI * 2, true);
+          ctx.closePath();
+          ctx.clip();
+          ctx.drawImage(ava, 36, 21, 260, 260);
+           
+          const c = client.channels.find("welcome");
+          c.sendFile(canvas.toBuffer());
+ 
+});
+});
 });
 
 
