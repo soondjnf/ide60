@@ -706,7 +706,7 @@ client.on('guildMemberAdd',async member => {
 
 //نسخة جاكيو المطورة حقوق كودز فقط
  client.on('message', message => { //jackeo جاكيو
-    if (message.content.startsWith("تهكير")) {
+    if (message.content.startsWith("$تهكير")) {
   if(!message.channel.guild) return message.reply(' ');//jackeo جاكيو
       if (message.author.bot) return//jackeo جاكيو
            message.delete();//jackeo جاكيو
