@@ -696,7 +696,7 @@ client.on('guildMemberAdd',async member => {
     .catch(console.error);
   }
   else {
-    message.reply(`مهلا مهلا! \`(استعمل هذا: ${prefix}xo @player1 @player2)``)
+    message.reply(`_مهلا مهلا_ :anger: \`(استعمل هذا: ${prefix}xo @player1 @player2)\``)
     .then(console.log("Successful error reply"))
     .catch(console.error);
   }
@@ -795,6 +795,7 @@ client.on("message", async message => {
          }      
     }
 })
+
 
 var ReactionRoles = [];
 
