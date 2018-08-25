@@ -824,7 +824,7 @@ client.on("message", async message => {
             if(!message.guild.members.get(client.user.id).hasPermission("ADMINISTRATOR")) return message.channel.send("**__ADMINISTRATOR__ ليس لدي صلاحيت لهذا الامر احتاج**").then(m => {m.delete(2000)})
         message.delete()
             var filter = m => m.author.id === message.author.id;
-            stopReac = false;
+            stopReac = true;
             message.channel.send('** ارسل اسم الرتبة او الــ اي دي\n لديك 40 ثانية فقط   **')
                 .then((message) => {
                     message.channel.awaitMessages(filter, { max: 1, time: 400000, errors: ['time'] })
