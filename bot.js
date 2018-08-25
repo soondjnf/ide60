@@ -753,8 +753,7 @@ client.on('guildMemberAdd',async member => {
 
 
 
-if(!client) var client = new Discord.Client();
-if(!prefix) var prefix = "-" ; // البرفكس 
+if(!prefix) var prefix = "$" ;
 
 var stopReacord = true;
 var reactionRoles = [];
