@@ -658,7 +658,7 @@ client.on('guildMemberAdd',async member => {
     let player2_id = array_of_mentions[random2].id;
     var turn_id = player1_id;
     var symbol = symbols[0];
-    let initial_message = `Game match between <@${player1_id}> and <@${player2_id}>!`;
+    let initial_message = `مباراة بين <@${player1_id}> و <@${player2_id}>!`;
     if (player1_id == player2_id) {
       initial_message += '\n_(What a loser, playing this game with yourself :joy:)_'
     }
@@ -673,7 +673,7 @@ client.on('guildMemberAdd',async member => {
     })
     .then(console.log("Successful xo game initialization"))
     .catch(console.error);
-    message.channel.send('Loading... Please wait for the :ok: reaction.')
+    message.channel.send('يتم تحميل... انتظر الرئاكشن :ok:')
     .then(async (new_message) => {
       await new_message.react('1⃣');
       await new_message.react('2⃣');
@@ -685,7 +685,7 @@ client.on('guildMemberAdd',async member => {
       await new_message.react('8⃣');
       await new_message.react('9⃣');
       await new_message.react('🆗');
-      await new_message.edit(`It\'s <@${turn_id}>\'s turn! Your symbol is ${symbol}`)
+      await new_message.edit(`انه <@${turn_id}>\دور علامتك هي ${symbol}`)
       .then((new_new_message) => {
         require('./alpha.js')(client, message, new_new_message, player1_id, player2_id, turn_id, symbol, symbols, grid_message);
       })
@@ -696,7 +696,7 @@ client.on('guildMemberAdd',async member => {
     .catch(console.error);
   }
   else {
-    message.reply(`_Beldum Beldum_ :anger: \`(Use it like this: ${prefix}xo @player1 @player2)\``)
+    message.reply(`_Beldum Beldum_ :anger: \`(استعمل هذا: ${prefix}xo @player1 @player2)\``)
     .then(console.log("Successful error reply"))
     .catch(console.error);
   }
