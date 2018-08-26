@@ -1022,8 +1022,8 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    }); 
    
 
-const yourID = "453986084804755469";
-const setupCMD = "*rolereact"
+const yourID = "343908666887372800";
+const setupCMD = "$rolereact"
 let initialMessage = `**@everyone  rolereact**
 **React to the messages below to get role. If you would like to remove the role remove your reaction!** `;
 const roles = ["Youtuber", "PS4 Gamer", "PC Gamer", "XBox Gamer", "Nintendo Gamer", "Twitch Streamer", "Technician", "Hacker", "Otaku"];//رتب
