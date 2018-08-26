@@ -760,7 +760,7 @@ client.on('guildMemberAdd',async member => {
                let mmmmEmbed = new Discord.RichEmbed()
                          .setAuthor(client.user.username)
                          .setThumbnail(message.author.avatarURL)
- .addField(` لقد قام <@${client.user}> بدعوة :`, ` ${inviteCount} `)
+ .addField(` لقد قام ${client.user} بدعوة :`, ` ${inviteCount} `)
            .setFooter(`- Requested By: ${message.author.tag}`);
            message.channel.send(mmmmEmbed)
 });
