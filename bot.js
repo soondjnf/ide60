@@ -1187,7 +1187,6 @@ client.on("raw", async packet => {
 
 
 
-if(!Discord) var Discord = require('discord.js');
 if(!client) var client = new Discord.Client();
 if(!prefix) var prefix = "-" ; // البرفكس 
 
@@ -1246,8 +1245,6 @@ client.on('messageReactionRemove', (reaction, user) => {
   if(!request) return;
   reaction.message.guild.members.get(user.id).removeRole(request.role);
 });
-
-client.login("     "); // حط توكن البوت داخل 
 
 
 
