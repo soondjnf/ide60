@@ -582,7 +582,7 @@ client.on('guildMemberAdd',async member => {
           ctx.drawImage(ava, 36, 21, 260, 260);
            
          let channel = member.guild.channels.find('name', 'welcome');
-          client.sendFile(canvas.toBuffer());
+          w.sendFile(canvas.toBuffer());
  
 });
 });
