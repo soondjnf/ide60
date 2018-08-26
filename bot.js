@@ -828,7 +828,7 @@ client.on('message', async msg => { // eslint-disable-line
 			        .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
 ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-					.setFooter("EpicBot")
+					.setFooter("Nasoor123132")
 					msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)})
 
 					// eslint-disable-next-line max-depth
@@ -969,51 +969,10 @@ function play(guild, song) {
 	serverQueue.textChannel.send(`بدء تشغيل : **${song.title}**`);
 }//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
 
-const adminprefix = "%VIP";//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-const devs = ['385103221804236800'];//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-client.on('message', message => {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-  var argresult = message.content.split(` `).slice(1).join(' ');//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-    if (!devs.includes(message.author.id)) return;//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-
-if (message.content.startsWith(adminprefix + 'setgame')) {//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-  client.user.setGame(argresult);
-    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`)
-} else
-  if (message.content.startsWith(adminprefix + 'setname')) {
-client.user.setUsername(argresult).then
-    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`)
-return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
-} else
-  if (message.content.startsWith(adminprefix + 'setavatar')) {
-client.user.setAvatar(argresult);
-  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
-      } else
-if (message.content.startsWith(adminprefix + 'setT')) {
-  client.user.setGame(argresult, "https://www.twitch.tv/idk");
-    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`)
 }
 
 });
 
-client.on("message", message => {
- if (message.content === `${prefix}music`) {
-  const embed = new Discord.RichEmbed() //by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-      .setColor("#000000")//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-      .setDescription(`
-${prefix}play ⇏ لتشغيل أغنية برآبط أو بأسم
-${prefix}skip ⇏ لتجآوز الأغنية الحآلية
-${prefix}pause ⇏ إيقآف الأغنية مؤقتا
-${prefix}resume ⇏ لموآصلة الإغنية بعد إيقآفهآ مؤقتا
-${prefix}vol ⇏ لتغيير درجة الصوت 100 - 0
-${prefix}stop ⇏ لإخرآج البوت من الروم
-${prefix}np ⇏ لمعرفة الأغنية المشغلة حآليا
-${prefix}queue ⇏ لمعرفة قآئمة التشغيل
-
- `)//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-   message.channel.sendEmbed(embed)//by ,$ ReBeL ء , 🔕#4777 'CODES SERVER'
-
-   }
-   });
 
 
    client.on('ready', () => {
