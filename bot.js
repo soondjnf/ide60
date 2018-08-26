@@ -1022,7 +1022,7 @@ ${prefix}queue ⇏ لمعرفة قآئمة التشغيل
    }); 
    
 
-const yourID = "343908666887372800";
+const yourID = "343908666887372800","453986084804755469";
 const setupCMD = "*rolereact"
 let initialMessage = `**@everyone  rolereact**
 **React to the messages below to get role. If you would like to remove the role remove your reaction!** `;
