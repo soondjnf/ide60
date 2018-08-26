@@ -278,49 +278,74 @@ if (message.content === '$credits') {
 message.channel.send(`** ${message.author.username}, your :credit_card: balance is ${games[message.author.id].credits}.**`)
 }
 });
-//تحويل//
 
-client.on("message", (message) => {
-if (message.author.bot) return;
-if (message.author.id === client.user.id) return;
-if(!message.channel.guild) return;       
-//Hey Fadi How Are You ?
+
+
+let cont = message.content.slice(prefix.length).split(" ");
+let args = cont.slice(2);
+let sender = message.author
 if(message.content.startsWith('$transfer')) {
-let men = message.mentions.users.first()
-let money = message.content.split(" ").slice(2).join('');
-var sender = message.author;
-if (!men) return message.channel.send(`**${sender.username}**| منشن شخص`);
-if (!money) {
-message.channel.send(`**${sender.username}**|يرجى وضع المبلغ  `)
-return;
-}
-if (!isNaN(money)) {
-message.channel.send(`**${message.author.username}**| يرجى وضع رقم صحيح `);
-return; 
-}
-if  (!games[men.id]) games[men.id] = {}
-if (!games[sender.id].credits){
-message.channel.send(`**${sender.username}**| انت لا تملك دراهم كافية للتحويل`);
-return;
-}
-if(money > games[sender.id].credits) {
-message.channel.send(`**${sender.username}**|دراهمك غير كافية `)
-}else {
-if (!games[men.id].credits) games[men.id].credits = 100;
-games[men.id].credits += (+money);  
-games[sender.id].credits += (-money);
+          if (!args[0]) {
+            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+         return;
+           }
+        // We should also make sure that args[0] is a number
+        if (isNaN(args[0])) {
+            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+            return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
+             }
+             if(profile[message.author.id].credits < args[0]) return message.channel.send("**Your Credits is not enough  that**")
+if(args[0].startsWith("-")) return  message.channel.send('**!! I Cant Do it**');
+				 let defineduser = '';
+            let firstMentioned = message.mentions.users.first();
+            defineduser = (firstMentioned)
+            if (!defineduser) return message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+            if(defineduser.id === message.author.id) return message.channel.send("***Transfering to your self hah ?!***")
+            var mentionned = message.mentions.users.first();
+if (!profile[sender.id]) profile[sender.id] = {}
+if (!profile[sender.id].credits) profile[sender.id].credits = 310;
+fs.writeFile('./profile.json', JSON.stringify(profile), (err) => {
+if (err) console.error(err);
+})
+var x = ['5587' ,' 9978' , '3785' , '7734' , '9864' , '7681' , '3758' , '7834' , '3489' , '1382' , '7389' , '8762' , '0889' , '0388' , '3316' , '0976' , '8603' , '1842' , '4565' , '9524' , '9524' , '0964' , '5930' , '5678' , '9567' , '6099' , '7058' , '0001' , '1324' , '9834' , '7668' , '0378' , '7055' , '9733' , '9876' , '9846' , '9685' , '8574' , '8975' , '9845' , '9862' , '0069' , '0807' , '0673' , '0813' , '1235' , '6879'];
+var x2 = ['5587' ,' 9978' , '3785' , '7734' , '9864' , '7681' , '3758' , '7834' , '3489' , '1382' , '7389' , '8762' , '0889' , '0388' , '3316' , '0976' , '8603' , '1842' , '4565' , '9524' , '9524' , '0964' , '5930' , '5678' , '9567' , '6099' , '7058' , '0001' , '1324' , '9834' , '7668' , '0378' , '7055' , '9733' , '9876' , '9846' , '9685' , '8574' , '8975' , '9845' , '9862' , '0069' , '0807' , '0673' , '0813' , '1235' , '6879'];
+        var x3 = Math.floor(Math.random()*x.length)
+        message.channel.send(` \`${args}\`** : الملبغ**  \n \`${x[x3]}\` ** : اكتب الرقم التالي حتي تتم عملية التحويل **`).then(msg1=> { 
+        var r = message.channel.awaitMessages(msg => msg.content == x2[x3], { maxMatches : 1, time : 60000, errors : ['time'] })
+        r.catch(() => {
+            message.delete()
+            r.delete()
+            msg.delete()
+            message.channel.sendEmbed(embed)
+        })
+        r.then(s=> {
+      var mando = message.mentions.users.id;
+      if  (!profile[defineduser.id]) profile[defineduser.id] = {}
+      if (!profile[defineduser.id].credits) profile[defineduser.id].credits = 200;
+      profile[defineduser.id].credits += (+args[0]);
+      profile[sender.id].credits += (-args[0]);
+      let mariam = message.author.username
+message.channel.send(`**:moneybag: | ${message.author.username}, has transferrerd ` + "`" + args[0] + "$` to " + `<@${defineduser.id}>**`)
+mentionned.send(` :credit_card: | Transfer Receipt \`\`\`You have received ${args[0]} from user ${message.author.username} ; (ID (${message.author.id})\`\`\``);
+               message.channel.sendEmbed(embed)
+        })
+        })
+        
+		
 
-message.channel.send(`:money_with_wings: **_عملية تحويل_**:money_with_wings: 
-المحول:** ${sender.username}:outbox_tray:**
-المستلم:**${men.username}:inbox_tray: **
-المبلغ:**${money}** :moneybag:`)
+
+
+
 }
-}
-});
+
+      });
+
+
+
 //عطية
 client.on("message", (message) => {     
 if(message.content.startsWith(prefix + '$give')) {
-if(message.author.id !=347838851605331968)return;
+if(message.author.id !=453986084804755469)return;
 let men = message.mentions.users.first();
 if  (!games[men.id]) games[men.id] = {}
 if (!games[men.id].credits) games[men.id].credits = 100;
