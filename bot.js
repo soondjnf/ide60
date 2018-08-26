@@ -278,17 +278,6 @@ if (message.content === '$credits') {
 message.channel.send(`** ${message.author.username}, your :credit_card: balance is ${games[message.author.id].credits}.**`)
 }
 });
-
-//عطية
-client.on("message", (message) => {     
-if(message.content.startsWith(prefix + '$give')) {
-if(message.author.id !=453986084804755469)return;
-let men = message.mentions.users.first();
-if  (!games[men.id]) games[men.id] = {}
-if (!games[men.id].credits) games[men.id].credits = 100;
-games[men.id].credits += 1000
-}
-});
 //معلوماتي
 client.on('message', message => {
   if (message.author.bot) return;
