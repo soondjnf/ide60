@@ -796,18 +796,6 @@ message.channel.send('**تم الارسال في الخاص**');
 });
   
 
-  var BOxox = "$"
-  const BOow = ["343908666887372800"];
-if (message.content.startsWith(BOxox + 'owner')) {
-      if(!message.channel.guild) return message.reply(' ');
-    if(!message.channel.guild) return;
-if( BOow.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage("**👑 انت صاحب البوت **")
-} else {
-   message.reply("**🚫 انت لست صاحب البوت**");   
-}
-}
-});
-  
 
 var stopReac = false;
 
