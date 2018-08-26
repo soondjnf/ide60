@@ -754,9 +754,6 @@ client.on('guildMemberAdd',async member => {
 
 
 
-   client.on('ready', () => {
-     client.user.setActivity("Nasoor123132",{type: 'WATCHING'});
- });
 
 
   client.on('message', message => {
