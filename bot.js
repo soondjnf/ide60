@@ -978,7 +978,7 @@ const setupCMD = "$rolereact"
 let initialMessage = `**@everyone  rolereact**
 **React to the messages below to get role. If you would like to remove the role remove your reaction!** `;
 const roles = ["Youtuber", "PS4 Gamer", "PC Gamer", "XBox Gamer", "Nintendo Gamer", "Twitch Streamer", "Technician", "Hacker", "Otaku"];//رتب
-const reactions = ["🔕", "👑", "🗼", "♚", "🌐", "🎮", "☕", "🗻", "💒"];//رياكشن
+const reactions = ["🔕", "👑", "🗼", "💬", "🌐", "🎮", "☕", "🗻", "💒"];//رياكشن
 
 if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
 
