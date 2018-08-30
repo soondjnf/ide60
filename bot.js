@@ -1038,10 +1038,10 @@ client.on('raw', event => {
 client.on('message', message => {
  var prefix = "$"
     if (message.author.Alpha) return;
-    if (!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(prefixban)) return;
 
     let command = message.content.split(" ")[0];
-    command = command.slice(prefix.length);
+    command = command.slice(prefixban.length);
   
     let args = message.content.split(" ").slice(1);
 
