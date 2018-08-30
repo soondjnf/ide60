@@ -1092,13 +1092,8 @@ const banembed = new Discord.RichEmbed()
 .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
 message.channel.send({embed : banembed});
 
-const banembed = new Discord.RichEmbed()
-.setAuthor(`Banned!`, mention.user.avatarURL)
-.setTitle("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-.setThumbnail(mention.user.avatarURL)
-.addField('# - السيرفر',message.guild.name,true)
-.addField("**الي اعطاك هو:**", '**[ ' + `${message.author.tag}` + ' ]**')
-.addField("**السبب:**", '**[ ' + `${reason}` + ' ]**')
+member.createDM().then(function (channel) {
+return channel.send(`***${user} تم اعطائك بان من سيرفر ${message.guild.name,true} بسبب ${reason} و الضي اعطاك البان هو ${message.author.tag}`)
 }
 });
 
