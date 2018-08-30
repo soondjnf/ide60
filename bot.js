@@ -1055,6 +1055,7 @@ let reason = message.content.split(" ").slice(2).join(" ");
 
 if (message.mentions.users.size < 1) return message.reply("**منشن شخص**");
 if(!reason) return message.reply ("**اكتب سبب الطرد**");
+if(!reason) reason = "غير محدد";
 if (!message.guild.member(user)
 
 .bannable) return message.reply("**لايمكنني طرد شخص اعلى من رتبتي يرجه اعطاء البوت رتبه عالي**");
@@ -1070,14 +1071,13 @@ const banembed = new Discord.RichEmbed()
 .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
 message.channel.send({embed : banembed});
 
- member.createDM().then(function (channel) {
-.setAuthor(`BANNED!`, user.displayAvatarURL)
-.setColor("RANDOM")
-.setTimestamp()
-.addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-.addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
-.addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
-}).catch(console.error)
+let thisEmbed = new Discord.RichEmbed()
+.setAuthor(mention.user.username, mention.user.avatarURL)
+.setTitle('تم اغطائك بان بسيرفر')
+.setThumbnail(mention.user.avatarURL)
+.addField('# - السيرفر',message.guild.name,true)
+.addField('# - تم اعطائك بان بواسطة',message.author,true)
+.addField('# - السبب',reason)
 
 }
 });
