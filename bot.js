@@ -1070,7 +1070,6 @@ const banembed = new Discord.RichEmbed()
 .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
 message.channel.send({embed : banembed});
 
-const banembed = new Discord.RichEmbed()
  member.createDM().then(function (channel) {
 .setAuthor(`BANNED!`, user.displayAvatarURL)
 .setColor("RANDOM")
