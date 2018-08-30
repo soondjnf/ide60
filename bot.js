@@ -1069,6 +1069,17 @@ const banembed = new Discord.RichEmbed()
 .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
 .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
 message.channel.send({embed : banembed});
+
+const banembed = new Discord.RichEmbed()
+ member.createDM().then(function (channel) {
+.setAuthor(`BANNED!`, user.displayAvatarURL)
+.setColor("RANDOM")
+.setTimestamp()
+.addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
+.addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
+.addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
+}).catch(console.error)
+
 }
 });
 
