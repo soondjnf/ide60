@@ -1036,16 +1036,16 @@ client.on('raw', event => {
 
 
 client.on('message', message => {
- var prefix = "$"
+ var prefix = "$ban"
     if (message.author.Alpha) return;
-    if (!message.content.startsWith(prefixban)) return;
+    if (!message.content.startsWith(prefix)) return;
 
     let command = message.content.split(" ")[0];
-    command = command.slice(prefixban.length);
+    command = command.slice(prefix.length);
   
     let args = message.content.split(" ").slice(1);
 
-if (command = "ban") {
+if (command = prefix) {
 if(!message.channel.guild) return message.reply('** This command only for servers**');
 
 if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
