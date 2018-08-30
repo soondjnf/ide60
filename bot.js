@@ -1091,15 +1091,6 @@ const banembed = new Discord.RichEmbed()
 .addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
 .addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
 message.channel.send({embed : banembed});
-
-let thisEmbed = new Discord.RichEmbed()
-.setAuthor(mention.user.username, mention.user.avatarURL)
-.setTitle('تم اغطائك بان بسيرفر')
-.setThumbnail(mention.user.avatarURL)
-.addField('# - السيرفر',message.guild.name,true)
-.addField('# - تم اعطائك بان بواسطة',message.author,true)
-.addField('# - السبب',reason)
-
 }
 });
 
