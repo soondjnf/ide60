@@ -1094,6 +1094,7 @@ message.channel.send({embed : banembed});
 
 member.createDM().then(function (channel) {
 return channel.send(`***${user} تم اعطائك بان من سيرفر ${message.guild.name,true} بسبب ${reason} و الضي اعطاك البان هو ${message.author.tag}`)
+ }
 });
 
   client.login(process.env.BOT_TOKEN);
